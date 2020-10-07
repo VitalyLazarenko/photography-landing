@@ -41,8 +41,10 @@
   "devDependencies": {
     "@types/lodash": "^4.14.161",
     "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.6",
     "@types/react-router-redux": "^5.0.18",
     "lodash": "^4.17.20",
+    "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
     "redux-saga": "^1.1.3"
   }
