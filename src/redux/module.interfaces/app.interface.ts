@@ -1,7 +1,7 @@
 import * as actions from '../action.creators/app.actions';
-import Model from "../../../types/Model";
-import Adjustment from "../../../types/Adjustment";
-import Region from "../../../types/Region";
+import Model from "../../types/Model";
+import Adjustment from "../../types/Adjustment";
+import Region from "../../types/Region";
 
 export interface IStateRecord {
     loading: boolean;

@@ -1,9 +1,9 @@
 import * as actions from '../action.constants/app.constants';
 import {FETCH_DISTRIBUTORS} from '../action.constants/app.constants';
 import {IStateRecord} from "../module.interfaces/app.interface";
-import Model from "../../../types/Model";
-import Region from "../../../types/Region";
-import Message from "../../../types/Message";
+import Model from "../../types/Model";
+import Region from "../../types/Region";
+import Message from "../../types/Message";
 
 export const changeControls = (payload: { name: keyof IStateRecord, value: any }): { type: typeof actions.CHANGE_CONTROLS, payload: { name: keyof IStateRecord, value: any } } => ({
   type: actions.CHANGE_CONTROLS,
