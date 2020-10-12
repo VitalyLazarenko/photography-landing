@@ -10,8 +10,8 @@ import {IActionTypes, IStateRecord} from "./module.interfaces/app.interface";
 import {
     changeControlsSaga,
     fetchAssetsSaga,
-    fetchDistributorsSaga,
-    sendMailSaga
+    // fetchDistributorsSaga,
+    // sendMailSaga
 } from "./action.generators/app.generators";
 
 export const moduleName = 'app';
@@ -19,10 +19,10 @@ export const moduleName = 'app';
 const StateRecord: IStateRecord = {
     loading: false,
     error: undefined,
-    panels: [...panels],
-    sliders: [...sliders],
-    categories: [...categories],
-    features: [...features],
+    panels: undefined,
+    sliders: undefined,
+    categories: undefined,
+    features: undefined,
     drawer_state: false,
     filter: 'All',
     search: undefined,
@@ -119,7 +119,7 @@ export const saga = function* () {
     yield all([
         takeEvery(actions.CHANGE_CONTROLS, changeControlsSaga),
         takeEvery(actions.FETCH_ASSETS, fetchAssetsSaga),
-        takeEvery(actions.FETCH_DISTRIBUTORS, fetchDistributorsSaga),
-        takeEvery(actions.SEND_MAIL, sendMailSaga),
+        // takeEvery(actions.FETCH_DISTRIBUTORS, fetchDistributorsSaga),
+        // takeEvery(actions.SEND_MAIL, sendMailSaga),
     ]);
 };

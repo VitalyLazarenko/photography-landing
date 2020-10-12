@@ -6,10 +6,10 @@ import Region from "../../types/Region";
 export interface IStateRecord {
     loading: boolean;
     error?: string;
-    panels: {type: string, preview?: string, content?: {id: number, title: string, thumbnail?: string, link: string}[]}[],
-    sliders: {location: string, title?:string, slides: {id: number, title: string, category: string, label: string, thumbnail: string}[]}[],
-    categories: {location: string, title: string, description: string, thumbnail: string}[],
-    features: {key: string, icon: string}[],
+    panels: undefined;
+    sliders: undefined;
+    categories: undefined;
+    features: undefined;
     drawer_state: boolean;
     filter: string,
     search?: string,

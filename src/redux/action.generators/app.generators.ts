@@ -18,7 +18,7 @@ import {
     fetchAssetsFailure
 } from "../action.creators/app.actions";
 
-import Contentful from "../../utils/app.helpers/contentful";
+// import Contentful from "../../utils/app.helpers/contentful";
 import Model from "../../types/Model";
 import Seating from "../../types/Seating";
 import Region from "../../types/Region";
@@ -27,7 +27,7 @@ import Distributor from "../../types/Distributor";
 import {SERVER_API} from "../api.constants";
 import {useDispatch} from "react-redux";
 
-const _instance = Contentful.getInstance();
+// const _instance = Contentful.getInstance();
 const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
 export const changeControlsSaga = function* ({payload}: ReturnType<typeof changeControls>) {
@@ -37,31 +37,31 @@ export const changeControlsSaga = function* ({payload}: ReturnType<typeof change
         if (payload.value === 'GSA') {
             console.log('GSA - test!');
             try {
-                const response = yield call(async () => {
-                    return await _instance.client.getEntries({
-                        'fields.gsa': true,
-                        content_type: 'model'
-                    })
-                })
-                console.log('response', response);
-                const models = response.items.map((el: any) => new Model(el));
-                yield put(gsaSuccess(models));
+                // const response = yield call(async () => {
+                //     return await _instance.client.getEntries({
+                //         'fields.gsa': true,
+                //         content_type: 'model'
+                //     })
+                // })
+                // console.log('response', response);
+                // const models = response.items.map((el: any) => new Model(el));
+                // yield put(gsaSuccess(models));
             } catch (e) {
                 console.error('e', e)
             }
         } else {
             if (payload.value) {
                 try {
-                    const response = yield call(async () => {
-                        return await _instance.client.getEntries({
-                            'fields.title[match]': payload.value,
-                            content_type: 'model'
-                        })
-                    })
-                    const models = response.items.map((el: any) => new Model(el));
-                    yield call(delay, 2000);
-                    yield call(delay, 2000);
-                    yield put(searchSuccess(models));
+                    // const response = yield call(async () => {
+                    //     return await _instance.client.getEntries({
+                    //         'fields.title[match]': payload.value,
+                    //         content_type: 'model'
+                    //     })
+                    // })
+                    // const models = response.items.map((el: any) => new Model(el));
+                    // yield call(delay, 2000);
+                    // yield call(delay, 2000);
+                    // yield put(searchSuccess(models));
                 } catch (e) {
                     console.error('e', e)
                 }
@@ -78,8 +78,8 @@ export const fetchAssetsSaga = function* (payload: ReturnType<typeof fetchAssets
         yield put(fetchAssetsRequest());
 
         const entries = yield all(payload.uuid.map((uuid: string) => call(async () => {
-            const entry = await _instance.client.getEntry(uuid);
-            return new payload.constructor.class(entry);
+            // const entry = await _instance.client.getEntry(uuid);
+            // return new payload.constructor.class(entry);
         })));
 
         yield put(fetchAssetsSuccess({name: payload.key, value: entries}));

@@ -4,7 +4,7 @@ import styles from './footer.module.scss';
 export const Footer = () => {
     return (
         <div>
-            Footer component!
+            <p>Footer component!</p>
         </div>
     )
 }
