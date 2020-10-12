@@ -13,6 +13,9 @@ export const HeaderComponent = () => {
                     Home
                 </button>
                 <button className={styles.button}>
+                    Portfolio
+                </button>
+                <button className={styles.button}>
                     Price
                 </button>
                 <button className={styles.button}>

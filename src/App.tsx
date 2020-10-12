@@ -6,11 +6,13 @@ import AppRouter from "./app.router";
 
 import HeaderComponent from "./components/Header.component";
 import HomePage from "./pages/Home.page";
+import PricePage from "./pages/Price.page";
 
 const App: React.FC = () => (
     <main className={styles.main}>
         <HeaderComponent/>
-        <HomePage/>
+        {/*<HomePage/>*/}
+        <PricePage/>
     </main>
     // <Provider store={store}>
     //   <main className={styles.main}>

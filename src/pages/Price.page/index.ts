@@ -1,1 +1,3 @@
-export * from './Price';
+import {PricePage} from './Price';
+
+export default PricePage;
