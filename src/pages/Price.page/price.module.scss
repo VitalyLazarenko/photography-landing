@@ -1,6 +1,7 @@
 .price_wrapper {
   display: flex;
   justify-content: center;
+
   .image_container {
     position: relative;
 
@@ -9,11 +10,11 @@
     align-items: center;
 
     width: 100%;
-    height: 100%  ;
+    height: 100%;
     max-height: 380px;
     overflow: hidden;
 
-    margin: 30px 0;
+    margin: 30px 0 0 0;
     transition: all .5s ease-out;
 
     img {
@@ -27,20 +28,78 @@
   }
 
   .card_container {
-    .title_container {
+    .title_wrapper {
       width: 100%;
+      margin: 20px 0;
       display: flex;
       justify-content: center;
-      .title {}
+      .title {
+        color: #444;
+        font-size: 32px;
+      }
     }
 
-    .card {
-      .title_container {
-        .title {}
-      }
+    .card_wrapper {
+      display: flex;
+      .card {
+        padding: 0 10px 50px 10px;
 
-      .description_container {
-        .text {}
+        .card_container {
+          padding-bottom: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          overflow: hidden;
+          margin-right: 1-px;
+
+          display: flex;
+          flex-direction: column;
+          .title_container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 120px;
+            margin-bottom: 20px;
+
+            background-color: #888;
+
+            .title_name {
+              color: #fff;
+              font-size: 24px;
+            }
+            .name {
+              color: #fff;
+              font-size: 32px;
+            }
+          }
+
+          .description_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .text {
+              position: relative;
+              width: 90%;
+              margin-bottom: 20px;
+              text-align: center;
+              color: #444;
+
+              &:after {
+                display: block;
+                content: "";
+                width: 30%;
+                height: 1px;
+                background-color: rgba(0,0,0, 0.2);
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+            }
+          }
+        }
       }
     }
   }
