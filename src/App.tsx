@@ -2,6 +2,7 @@ import React from 'react';
 // import {Provider} from "react-redux";
 // import store from "./redux";
 import styles from './app.module.scss';
+
 import AppRouter from "./app.router";
 
 import HeaderComponent from "./components/Header.component";
