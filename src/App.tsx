@@ -13,11 +13,7 @@ import {AboutPage} from "./pages/About.page/About";
 
 const App: React.FC = () => (
     <main className={styles.main}>
-        <HeaderComponent/>
-        {/*<HomePage/>*/}
-        {/*<PricePage/>*/}
-        <AboutPage/>
-        <Footer/>
+        <AppRouter/>
     </main>
 );
 

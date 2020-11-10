@@ -1,6 +1,8 @@
 import React from 'react';
 import {Grid} from '@material-ui/core'
 import styles from './header.module.scss';
+import {Link} from "react-router-dom";
+import Routes from '../../app.router/router.constants';
 
 export const HeaderComponent = () => {
     return(
@@ -9,18 +11,18 @@ export const HeaderComponent = () => {
                 <img src="/assets/images/header/logo.png" alt=""/>
             </Grid>
             <Grid item md={12} className={styles.button_container}>
-                <button className={styles.button}>
+                <Link to={Routes.HomePage} className={styles.button}>
                     Home
-                </button>
+                </Link>
                 <button className={styles.button}>
                     Portfolio
                 </button>
-                <button className={styles.button}>
+                <Link to={Routes.PricePage} className={styles.button}>
                     Price
-                </button>
-                <button className={styles.button}>
+                </Link>
+                <Link to={Routes.AboutPage} className={styles.button}>
                     About me
-                </button>
+                </Link>
             </Grid>
         </Grid>
     )
