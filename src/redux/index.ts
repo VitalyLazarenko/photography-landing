@@ -1,7 +1,7 @@
 import {applyMiddleware, compose, createStore} from "redux";
 import createSagaMiddleware from 'redux-saga';
 import {routerMiddleware} from "react-router-redux";
-import history from "../utils/app.helpers/history";
+import history from "../utils/history";
 import reducer from "./root.reducer";
 import saga from './root.saga';
 
