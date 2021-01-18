@@ -12,3 +12,5 @@ const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time)
 export const changeControlsSaga = function* ({payload}: ReturnType<typeof changeControls>) {
     yield put(changeControlsSuccess({...payload}));
 };
+
+//TODO need create fetch methods entry in CF

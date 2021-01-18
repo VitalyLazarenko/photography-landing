@@ -1,14 +1,16 @@
 import React from 'react';
-// import {Provider} from "react-redux";
-// import store from "./redux";
 import styles from './app.module.scss';
 
 import AppRouter from "./app.router";
+import {Provider} from "react-redux";
+import store from "./redux";
 
 const App: React.FC = () => (
-    <main className={styles.main}>
-        <AppRouter/>
-    </main>
+    <Provider store={store}>
+        <main className={styles.main}>
+            <AppRouter/>
+        </main>
+    </Provider>
 );
 
 export default App;
