@@ -1,9 +1,12 @@
 import {createClient} from "contentful";
 
+// Content Delivery API - 3v86WFXEBi5B_NawAhqbk8PGbCt1PjUbmdMDcpSADmc
+// Content Preview API - 2CqBfm2eqqFtLnrvHjMcaHcwO9c1p9k9KO2hGo2VIqU
+
 //TODO creds for contentful (grigorenko)
 const config = {
-    space: "tyys03ejga6m",
-    accessToken: "Tg6-Eg6dQguskz2q1n4ajbQpMWaHLHnDQgBQKb04DE8"
+    space: "1v8fhoighetn",
+    accessToken: "3v86WFXEBi5B_NawAhqbk8PGbCt1PjUbmdMDcpSADmc"
 };
 
 export default class Contentful {

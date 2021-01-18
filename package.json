@@ -11,6 +11,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "contentful": "^8.1.7",
     "material-ui": "^0.20.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",

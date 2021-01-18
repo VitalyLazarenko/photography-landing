@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './home.module.scss';
+import styles from './Home.module.scss';
 import {Grid} from "@material-ui/core";
 import {Catalog} from "./static/catalog/Catalog";
 

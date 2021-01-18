@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './price.module.scss';
+import styles from './Price.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 
 export const PricePage = () => {

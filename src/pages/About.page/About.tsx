@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './about.module.scss';
+import styles from './About.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 
 export const AboutPage = () => {
