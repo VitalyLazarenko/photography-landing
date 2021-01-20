@@ -1,8 +1,14 @@
 import * as actions from '../action.creators/app.actions';
+import {AboutMe, Package, Series} from "../../types";
 
 export interface IStateRecord {
     loading: boolean;
     error?: string;
+    avatar?: string;
+    aboutMe?: AboutMe;
+    videoHomePage?: string;
+    packages?: Package[];
+    portfolio?: Series[];
 }
 
 type InferTypes<T> = T extends {[key: string]: infer U} ? U : never;
