@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid} from '@material-ui/core'
 import styles from './header.module.scss';
-import {Link} from "react-router-dom";
+import {HashLink as Link} from "react-router-hash-link";
 import Routes from '../../app.router/router.constants';
 
 export const HeaderComponent = () => {
@@ -14,9 +14,13 @@ export const HeaderComponent = () => {
                 <Link to={Routes.HomePage} className={styles.button}>
                     Home
                 </Link>
-                <button className={styles.button}>
+                <Link
+                    to={`${Routes.HomePage}#portfolio`}
+                    className={styles.button}
+                    scroll={(el) => el.scrollIntoView({behavior: "smooth"})}
+                >
                     Portfolio
-                </button>
+                </Link>
                 <Link to={Routes.PricePage} className={styles.button}>
                     Price
                 </Link>

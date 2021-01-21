@@ -86,6 +86,11 @@
               text-align: center;
               color: #444;
 
+              &_bold {
+                @extend .text;
+                font-weight: bold;
+              }
+
               &:after {
                 display: block;
                 content: "";

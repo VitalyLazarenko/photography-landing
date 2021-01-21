@@ -1,0 +1,67 @@
+.series_wrapper {
+  padding: 0 10%;
+
+  .title_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fafafa;
+
+    .title {
+      text-transform: capitalize;
+      text-align: center;
+
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      color: #444;
+      transition: color .25s ease-out;
+
+      margin: 30px 0 0 0;
+    }
+
+    .subtitle {
+      width: 50%;
+      text-transform: capitalize;
+      text-align: center;
+
+      font-size: 14px;
+      line-height: 25px;
+      color: #444;
+      transition: color .25s ease-out;
+
+      margin-bottom: 30px;
+    }
+  }
+
+  .photo_wrapper {
+    margin: 20px 0;
+
+    .photo_container {
+      width: auto;
+      height: 100%;
+      cursor: pointer;
+
+      min-height: 350px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: all .45s ease;
+
+      img {
+        transition: all .45s ease;
+      }
+
+      &:hover {
+        img {
+          filter: brightness(.7);
+        }
+      }
+    }
+  }
+}

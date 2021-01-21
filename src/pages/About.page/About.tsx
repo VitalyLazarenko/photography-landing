@@ -1,27 +1,35 @@
 import React from "react";
 import styles from './About.module.scss';
 import {Grid, Typography} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {aboutMeSelector, avatarSelector} from "../../redux/app.module";
 
 export const AboutPage = () => {
+    const avatar = useSelector(avatarSelector);
+    const aboutMeContect = useSelector(aboutMeSelector);
+
+
     return (
         <Grid container className={styles.about_wrapper}>
             <Grid item md={6} className={styles.avatar_container}>
                 <section className={styles.img_container}>
-                    <img src="/assets/images/aboutPage/avatar.jpg" alt=""/>
+                    <img src={avatar} alt=""/>
                 </section>
             </Grid>
             <Grid item md={6} className={styles.description_container}>
                 <Typography className={styles.title}>
-                    Приветствую Вас, дорогие друзья!
+                    {aboutMeContect && aboutMeContect.title}
                 </Typography>
                 <Typography className={styles.description}>
-                    Привет, дорогие друзья))) Меня зовут Григоренко Сергей, и я фотограф. Моя страсть, профессия,
-                    жизнь - все это ваши фотографии. Я обожаю снимать самые счастливые и радостные дни вашей жизни.
-                    Нет ничего прекраснее, чем улыбающиеся, искренние и добрые люди. Именно такие моменты я запечатлю
-                    для вас. Свадьбы, семейные праздники, прогулки, любые события - я смогу подарить вам яркие
-                    воспоминания, которые будут вызывать только положительные эмоции.
+                    {aboutMeContect && aboutMeContect.description}
                 </Typography>
             </Grid>
+
+            <Grid item md={12} className={styles.video_container}>
+                <video src={aboutMeContect && aboutMeContect.video} autoPlay controls ></video>
+            </Grid>
+
+            {/*//TODO need create next container with info*/}
         </Grid>
     )
 }

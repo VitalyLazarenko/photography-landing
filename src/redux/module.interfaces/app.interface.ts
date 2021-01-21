@@ -9,6 +9,7 @@ export interface IStateRecord {
     videoHomePage?: string;
     packages?: Package[];
     portfolio?: Series[];
+    selectSeries?: Series;
 }
 
 type InferTypes<T> = T extends {[key: string]: infer U} ? U : never;

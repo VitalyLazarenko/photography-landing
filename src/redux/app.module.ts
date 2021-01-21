@@ -23,6 +23,7 @@ const StateRecord: IStateRecord = {
     videoHomePage: undefined,
     packages: undefined,
     portfolio: undefined,
+    selectSeries: undefined
 };
 
 export const ReducerRecord: Record.Factory<IStateRecord> = Record(cloneDeep(StateRecord));
@@ -65,6 +66,7 @@ export const aboutMeSelector = createSelector(stateSelector, state => state.get(
 export const videoHomePageSelector = createSelector(stateSelector, state => state.get('videoHomePage'));
 export const packagesSelector = createSelector(stateSelector, state => state.get('packages'));
 export const portfolioSelector = createSelector(stateSelector, state => state.get('portfolio'));
+export const selectSeriesSelector = createSelector(stateSelector, state => state.get('selectSeries'));
 
 
 export const saga = function* () {

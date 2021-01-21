@@ -3,7 +3,7 @@ import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import Routes from "./router.constants";
 import {useDispatch, useSelector} from "react-redux";
 
-import {HomePage, AboutPage, PricePage} from "../pages";
+import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
 import {Footer, HeaderComponent} from "../components";
 import {changeControls, fetchLanding} from "../redux/action.creators/app.actions";
 import {
@@ -47,6 +47,7 @@ const AppRouter: React.FC = () => {
                 <Route exact path={Routes.HomePage} component={HomePage}/>
                 <Route path={Routes.PricePage} component={PricePage}/>
                 <Route path={Routes.AboutPage} component={AboutPage}/>
+                <Route path={Routes.SeriesPage} component={SeriesPage}/>
             </Switch>
             <Footer/>
         </Router>
