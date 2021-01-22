@@ -3,7 +3,7 @@ import styles from './Home.module.scss';
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 import {portfolioSelector, videoHomePageSelector} from "../../redux/app.module";
-import {Catalog} from "../../components/Catalog.component/Catalog";
+import {Catalog, Contacts} from "../../components";
 
 export const HomePage = () => {
     const videoHomePage = useSelector(videoHomePageSelector);
@@ -21,6 +21,8 @@ export const HomePage = () => {
             <Grid container className={styles.catalog} id="portfolio">
                 <Catalog portfolio={portfolio}/>
             </Grid>
+
+            <Contacts/>
         </Grid>
     )
 }

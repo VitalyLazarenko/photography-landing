@@ -44,6 +44,18 @@
     }
   }
 
+  .overview_container {
+    height: 100%;
+    width: 100%;
+    background-color: #fafafa;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px 0;
+  }
+
   .video_container {
     display: flex;
     justify-content: center;

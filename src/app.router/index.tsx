@@ -13,6 +13,7 @@ import {
     packagesSelector, portfolioSelector,
     videoHomePageSelector
 } from "../redux/app.module";
+import ScrollToTop from "./ScrollTop";
 
 const AppRouter: React.FC = () => {
     const dispatch = useDispatch();
@@ -24,9 +25,8 @@ const AppRouter: React.FC = () => {
     const portfolio = useSelector(portfolioSelector);
 
     useLayoutEffect(() => {
-        dispatch(changeControls({name: "loading", value: !loading}));
         dispatch(fetchLanding());
-    },[]);
+    },[dispatch]);
 
     useEffect(() => {
         console.log('result Router', {
@@ -41,7 +41,8 @@ const AppRouter: React.FC = () => {
     console.log('loading', loading);
 
     return (
-        <Router>
+        <Router >
+            <ScrollToTop/>
             <HeaderComponent/>
             <Switch>
                 <Route exact path={Routes.HomePage} component={HomePage}/>

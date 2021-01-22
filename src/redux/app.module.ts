@@ -23,7 +23,9 @@ const StateRecord: IStateRecord = {
     videoHomePage: undefined,
     packages: undefined,
     portfolio: undefined,
-    selectSeries: undefined
+    selectSeries: undefined,
+    imagePrice: undefined,
+    contacts: undefined,
 };
 
 export const ReducerRecord: Record.Factory<IStateRecord> = Record(cloneDeep(StateRecord));
@@ -44,8 +46,10 @@ export default (state = new ReducerRecord(), action: IActionTypes) => {
                 .set("avatar", action.payload.avatar)
                 .set("aboutMe", action.payload.aboutMe)
                 .set("videoHomePage", action.payload.videoHomePage)
+                .set("imagePrice", action.payload.imagePrice)
                 .set("packages", action.payload.packages)
                 .set("portfolio", action.payload.portfolio)
+                .set("contacts", action.payload.contacts)
                 .set("loading", false)
         }
         case actions.FETCH_LANDING_FAILURE: {
@@ -67,6 +71,8 @@ export const videoHomePageSelector = createSelector(stateSelector, state => stat
 export const packagesSelector = createSelector(stateSelector, state => state.get('packages'));
 export const portfolioSelector = createSelector(stateSelector, state => state.get('portfolio'));
 export const selectSeriesSelector = createSelector(stateSelector, state => state.get('selectSeries'));
+export const imagePriceSelector = createSelector(stateSelector, state => state.get('imagePrice'));
+export const contactsSelector = createSelector(stateSelector, state => state.get('contacts'));
 
 
 export const saga = function* () {

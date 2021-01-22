@@ -2,16 +2,18 @@ import React from "react";
 import styles from './Price.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import {packagesSelector} from "../../redux/app.module";
+import {imagePriceSelector, packagesSelector} from "../../redux/app.module";
 import {Package} from "../../types";
+import {Contacts} from "../../components";
 
 export const PricePage = () => {
+    const image = useSelector(imagePriceSelector);
     const packages = useSelector(packagesSelector);
 
     return (
         <Grid container className={styles.price_wrapper}>
             <Grid item md={12} className={styles.image_container}>
-                <img src="/assets/images/PricePage/photo.jpg" alt=""/>
+                <img src={image && image} alt=""/>
             </Grid>
 
             <Grid item md={8} className={styles.card_container}>
@@ -81,7 +83,15 @@ export const PricePage = () => {
                 </Grid>
             </Grid>
 
-            {/*//TODO create photobook overview*/}
+            <Grid item md={12} className={styles.packages_overview_container}>
+                //TODO create photobook overview
+            </Grid>
+
+            <Grid item md={12} className={styles.packages_overview_container}>
+                //TODO create packages overview
+            </Grid>
+
+            <Contacts/>
         </Grid>
     )
 }

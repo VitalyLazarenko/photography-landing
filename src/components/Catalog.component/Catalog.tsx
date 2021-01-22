@@ -20,10 +20,10 @@ export const Catalog: React.FC<ICatalogProps> = ({portfolio}) => {
     }
 
     return (
-        <Grid container spacing={1} className={styles.wrapper}>
+        <Grid container spacing={2} className={styles.wrapper}>
             {
-                portfolio && portfolio.map((el: Series) => (
-                    <Grid item md={3}  onClick={() => handleClickSelected(el)}>
+                portfolio && portfolio.map((el: Series, index) => (
+                    <Grid item md={4} key={index} onClick={() => handleClickSelected(el)}>
                         <Link to={Routes.SeriesPage} className={styles.series_card}>
                         <section className={styles.img_container}>
                             <img src={el.preview} alt=""/>

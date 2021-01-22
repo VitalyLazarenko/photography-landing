@@ -1,5 +1,5 @@
 import * as actions from '../action.creators/app.actions';
-import {AboutMe, Package, Series} from "../../types";
+import {AboutMe, Contact, Package, Series} from "../../types";
 
 export interface IStateRecord {
     loading: boolean;
@@ -10,6 +10,8 @@ export interface IStateRecord {
     packages?: Package[];
     portfolio?: Series[];
     selectSeries?: Series;
+    imagePrice?: string;
+    contacts?: Contact;
 }
 
 type InferTypes<T> = T extends {[key: string]: infer U} ? U : never;
