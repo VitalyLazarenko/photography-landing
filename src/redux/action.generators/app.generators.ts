@@ -5,6 +5,7 @@ import {
 } from "../action.creators/app.actions";
 import Contentful from "../../utils/contentful";
 import {AboutMe, Contact, Package, Series} from "../../types";
+import {VideoOverview} from "../../types/VideoOverview";
 
 
 const _instance = Contentful.getInstance();
@@ -30,6 +31,16 @@ export const fetchLandingSaga = function* () {
                 about_me_title: response.fields.about_me_title,
                 about_me: response.fields.about_me,
                 video_about_me: response.fields.video_about_me,
+            }),
+            photoBookVideo: new VideoOverview({
+                title: response.fields.photo_book_video_title,
+                description: response.fields.photo_book_description,
+                video: response.fields.photo_book_video,
+            }),
+            packingVideo: new VideoOverview({
+                title: response.fields.packing_video_title,
+                description: response.fields.packing_description,
+                video: response.fields.packing_video,
             }),
             videoHomePage: response.fields.video_home_page.fields.file.url,
             imagePrice: response.fields.image_price_page.fields.file.url,

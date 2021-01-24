@@ -2,13 +2,25 @@ import React from "react";
 import styles from './Price.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import {imagePriceSelector, packagesSelector} from "../../redux/app.module";
+import {
+    imagePriceSelector,
+    packagesSelector,
+    packingVideoSelector,
+    photoBookVideoSelector
+} from "../../redux/app.module";
 import {Package} from "../../types";
 import {Contacts} from "../../components";
 
 export const PricePage = () => {
     const image = useSelector(imagePriceSelector);
     const packages = useSelector(packagesSelector);
+    const photoBookVideo = useSelector(photoBookVideoSelector);
+    const packingVideo = useSelector(packingVideoSelector);
+
+    console.log('pricePage', {
+        book: photoBookVideo,
+        packing: packingVideo
+    });
 
     return (
         <Grid container className={styles.price_wrapper}>
@@ -83,14 +95,34 @@ export const PricePage = () => {
                 </Grid>
             </Grid>
 
-            <Grid item md={12} className={styles.packages_overview_container}>
-                //TODO create photobook overview
-            </Grid>
 
-            <Grid item md={12} className={styles.packages_overview_container}>
-                //TODO create packages overview
-            </Grid>
+            {
+                photoBookVideo &&
+                <Grid item md={12} className={styles.overview_container}>
+                    <Grid item md={6} className={styles.video_container}>
+                        <video src={photoBookVideo.video} controls preload="auto"/>
+                    </Grid>
 
+                    <Grid item md={6} className={styles.description_video}>
+                        <Typography className={styles.video_title}>{photoBookVideo.title}</Typography>
+                        <Typography className={styles.video_description}>{photoBookVideo.description}</Typography>
+                    </Grid>
+                </Grid>
+            }
+
+            {
+                packingVideo &&
+                <Grid item md={12} className={styles.overview_container}>
+                    <Grid item md={6} className={styles.description_video}>
+                        <Typography className={styles.video_title}>{packingVideo.title}</Typography>
+                        <Typography className={styles.video_description}>{packingVideo.description}</Typography>
+                    </Grid>
+
+                    <Grid item md={6} className={styles.video_container}>
+                        <video src={packingVideo.video} controls preload="auto"/>
+                    </Grid>
+                </Grid>
+            }
             <Contacts/>
         </Grid>
     )
