@@ -17,7 +17,7 @@ export const PricePage = () => {
     const photoBookVideo = useSelector(photoBookVideoSelector);
     const packingVideo = useSelector(packingVideoSelector);
 
-    console.log('pricePage', {
+    console.log('BOOK AND PACKING:', {
         book: photoBookVideo,
         packing: packingVideo
     });

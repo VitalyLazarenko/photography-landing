@@ -3,7 +3,7 @@ import styles from './PortfolioPage.module.scss';
 
 export const PortfolioPage = () => {
     return (
-        <div>
+        <div className={styles.wrapper}>
             Portfolio page!
         </div>
     )

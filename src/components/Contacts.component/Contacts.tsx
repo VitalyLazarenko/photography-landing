@@ -21,19 +21,19 @@ export const Contacts = () => {
                         <Typography className={styles.description}>{contacts.description}</Typography>
                     </Grid>
                     <Grid item md={12} className={styles.links_container}>
-                        <a target="_blank" href={contacts.link_instagram} className={styles.link}>
+                        <a target="_blank" rel="noopener noreferrer" href={contacts.link_instagram} className={styles.link}>
                             <img src={instLogo} alt=""/>
                         </a>
-                        <a target="_blank" href={contacts.link_viber} className={styles.link}>
+                        <a target="_blank" rel="noopener noreferrer" href={contacts.link_viber} className={styles.link}>
                             <img src={viberLogo} alt=""/>
                         </a>
-                        <a target="_blank" href={contacts.link_telegram} className={styles.link}>
+                        <a target="_blank" rel="noopener noreferrer" href={contacts.link_telegram} className={styles.link}>
                             <img src={telegramLogo} alt=""/>
                         </a>
-                        <a target="_blank" href={contacts.link_watsapp} className={styles.link}>
+                        <a target="_blank" rel="noopener noreferrer" href={contacts.link_watsapp} className={styles.link}>
                             <img src={wtLogo} alt=""/>
                         </a>
-                        <a href={contacts.phone_number} className={styles.link}>
+                        <a href={contacts.phone_number} rel="noopener noreferrer" className={styles.link}>
                             <img src={phoneLogo} alt=""/>
                         </a>
                     </Grid>

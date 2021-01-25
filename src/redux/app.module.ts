@@ -1,7 +1,7 @@
 import {Record} from 'immutable';
 import {createSelector} from "reselect";
 import {cloneDeep} from 'lodash';
-import {all, takeEvery, takeLatest, take} from 'redux-saga/effects';
+import {all, takeEvery} from 'redux-saga/effects';
 
 import {RootState} from "./root.reducer";
 import * as actions from './action.constants/app.constants';
@@ -10,8 +10,6 @@ import {IActionTypes, IStateRecord} from "./module.interfaces/app.interface";
 import {
     changeControlsSaga, fetchLandingSaga,
 } from "./action.generators/app.generators";
-import {fetchLanding} from "./action.creators/app.actions";
-import {AboutMe, Package, Series} from "../types";
 
 export const moduleName = 'app';
 

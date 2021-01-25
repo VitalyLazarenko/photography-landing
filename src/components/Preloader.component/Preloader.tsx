@@ -3,7 +3,7 @@ import styles from './preloader.module.scss';
 
 export const PreloaderComponent = () => {
     return(
-        <div>
+        <div className={styles.wrapper}>
             Preloader!
         </div>
     )

@@ -23,7 +23,7 @@ export const fetchLandingSaga = function* () {
             return await _instance.client.getEntry("3fpfAZt1PRbAYgbiI1XL93")
         });
 
-        console.log('response', response);
+        console.log('RESPONSE:', response);
 
         const result = {
             avatar: response.fields.avatar.fields.file.url,
@@ -49,7 +49,7 @@ export const fetchLandingSaga = function* () {
             contacts: new Contact(response.fields.contacts),
         }
 
-        console.log('result', result);
+        console.log('RESULT:', result);
 
         yield put(fetchLandingSuccess(result));
     } catch (error) {

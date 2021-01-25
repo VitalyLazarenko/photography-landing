@@ -5,20 +5,19 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
 import {Footer, HeaderComponent} from "../components";
-import {changeControls, fetchLanding} from "../redux/action.creators/app.actions";
+import {fetchLanding} from "../redux/action.creators/app.actions";
 import {
     aboutMeSelector,
     avatarSelector,
-    loadingSelector,
     packagesSelector, portfolioSelector,
     videoHomePageSelector
 } from "../redux/app.module";
 import ScrollToTop from "./ScrollTop";
 import {PortfolioPage} from "../pages/Portfolio.page/PortfolioPage";
+import {Series} from "../types";
 
 const AppRouter: React.FC = () => {
     const dispatch = useDispatch();
-    const loading = useSelector(loadingSelector);
     const avatar = useSelector(avatarSelector);
     const aboutMe = useSelector(aboutMeSelector);
     const videoHomePage = useSelector(videoHomePageSelector);
@@ -30,7 +29,7 @@ const AppRouter: React.FC = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log('result Router', {
+        console.log('STATE IN ROUTER:', {
             avatar: avatar,
             aboutMe: aboutMe,
             videoHomePage: videoHomePage,
@@ -39,7 +38,20 @@ const AppRouter: React.FC = () => {
         })
     }, [avatar, aboutMe, videoHomePage, packages, portfolio]);
 
-    console.log('loading', loading);
+    const renderSeries = () =>
+        portfolio && portfolio.map((series: Series) => {
+            const SeriesComponent: React.FC = () => <SeriesPage/>;
+            return (
+                <React.Fragment key={series._id}>
+                    <Route
+                        exact
+                        path={`${Routes.SeriesPage}/:sid`}
+                        component={SeriesComponent}
+                    />
+                </React.Fragment>
+            );
+        });
+
 
     return (
         <Router>
@@ -49,8 +61,11 @@ const AppRouter: React.FC = () => {
                 <Route exact path={Routes.HomePage} component={HomePage}/>
                 <Route path={Routes.PricePage} component={PricePage}/>
                 <Route path={Routes.AboutPage} component={AboutPage}/>
-                <Route path={Routes.SeriesPage} component={SeriesPage}/>
+                {/*<Route path={Routes.SeriesPage} component={SeriesPage}/>*/}
                 <Route path={Routes.PortfolioPage} component={PortfolioPage}/>
+                {
+                    portfolio && renderSeries()
+                }
             </Switch>
             <Footer/>
         </Router>

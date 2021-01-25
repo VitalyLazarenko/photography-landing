@@ -4,7 +4,6 @@ import {Grid, Typography} from "@material-ui/core";
 import {Series} from "../../types";
 import {useDispatch} from "react-redux";
 import {changeControls} from "../../redux/action.creators/app.actions";
-import history from "../../utils/history";
 import Routes from '../../app.router/router.constants';
 import {Link} from "react-router-dom";
 
@@ -24,7 +23,7 @@ export const Catalog: React.FC<ICatalogProps> = ({portfolio}) => {
             {
                 portfolio && portfolio.map((el: Series, index) => (
                     <Grid item md={4} key={index} onClick={() => handleClickSelected(el)}>
-                        <Link to={Routes.SeriesPage} className={styles.series_card}>
+                        <Link to={`${Routes.SeriesPage}/:${el._id}`} className={styles.series_card}>
                         <section className={styles.img_container}>
                             <img src={el.preview} alt=""/>
                         </section>

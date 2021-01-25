@@ -8,7 +8,7 @@ import {Catalog, Contacts} from "../../components";
 export const HomePage = () => {
     const videoHomePage = useSelector(videoHomePageSelector);
     const portfolio = useSelector(portfolioSelector);
-    console.log('portfolio', portfolio);
+
     return (
         <Grid container className={styles.home_wrapper}>
             <Grid item md={12} className={styles.video_container}>
