@@ -5,7 +5,7 @@ import {HashLink as Link} from "react-router-hash-link";
 import Routes from '../../app.router/router.constants';
 
 export const HeaderComponent = () => {
-    return(
+    return (
         <Grid container className={styles.header_wrapper}>
             <Grid item md={12} className={styles.logo_container}>
                 <img src="/assets/images/header/logo.png" alt=""/>
@@ -15,10 +15,13 @@ export const HeaderComponent = () => {
                     Home
                 </Link>
                 <Link
-                    to={`${Routes.HomePage}#portfolio`}
+                    to={`${Routes.HomePage}#series`}
                     className={styles.button}
                     scroll={(el) => el.scrollIntoView({behavior: "smooth"})}
                 >
+                    Series
+                </Link>
+                <Link to={Routes.PortfolioPage} className={styles.button}>
                     Portfolio
                 </Link>
                 <Link to={Routes.PricePage} className={styles.button}>

@@ -14,6 +14,7 @@ import {
     videoHomePageSelector
 } from "../redux/app.module";
 import ScrollToTop from "./ScrollTop";
+import {PortfolioPage} from "../pages/Portfolio.page/PortfolioPage";
 
 const AppRouter: React.FC = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const AppRouter: React.FC = () => {
 
     useLayoutEffect(() => {
         dispatch(fetchLanding());
-    },[dispatch]);
+    }, [dispatch]);
 
     useEffect(() => {
         console.log('result Router', {
@@ -41,7 +42,7 @@ const AppRouter: React.FC = () => {
     console.log('loading', loading);
 
     return (
-        <Router >
+        <Router>
             <ScrollToTop/>
             <HeaderComponent/>
             <Switch>
@@ -49,6 +50,7 @@ const AppRouter: React.FC = () => {
                 <Route path={Routes.PricePage} component={PricePage}/>
                 <Route path={Routes.AboutPage} component={AboutPage}/>
                 <Route path={Routes.SeriesPage} component={SeriesPage}/>
+                <Route path={Routes.PortfolioPage} component={PortfolioPage}/>
             </Switch>
             <Footer/>
         </Router>
