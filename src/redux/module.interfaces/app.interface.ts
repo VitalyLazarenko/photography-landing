@@ -10,6 +10,7 @@ export interface IStateRecord {
     videoHomePage?: string;
     packages?: Package[];
     portfolio?: Series[];
+    otherPortfolio?: string[];
     selectSeries?: Series;
     imagePrice?: string;
     contacts?: Contact;

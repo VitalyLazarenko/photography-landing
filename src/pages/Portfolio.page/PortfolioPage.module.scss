@@ -1,0 +1,25 @@
+.wrapper {
+  padding: 20px 10%;
+
+  .photo_container {
+    width: auto;
+    height: 100%;
+    cursor: pointer;
+
+    min-height: 350px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .45s ease;
+
+    img {
+      transition: all .45s ease;
+
+      &:hover {
+        filter: brightness(.7);
+      }
+    }
+  }
+}

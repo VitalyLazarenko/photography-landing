@@ -46,6 +46,7 @@ export const fetchLandingSaga = function* () {
             imagePrice: response.fields.image_price_page.fields.file.url,
             packages: response.fields.packages.map((el: any) => new Package(el)),
             portfolio: response.fields.portfolio.map((el: any) => new Series(el)),
+            other_portfolio: response.fields.other_portfolio.map((el: any) => el.fields.file.url),
             contacts: new Contact(response.fields.contacts),
         }
 
