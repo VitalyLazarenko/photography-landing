@@ -1,10 +1,13 @@
 import * as actions from '../action.creators/app.actions';
 import {AboutMe, Contact, Package, Series} from "../../types";
 import {VideoOverview} from "../../types/VideoOverview";
+import {ISelectedPhoto} from "../../types/ISelectedPhoto";
 
 export interface IStateRecord {
     loading: boolean;
     error?: string;
+    showPhotoPopup: boolean;
+    selectedPhoto?: ISelectedPhoto;
     avatar?: string;
     aboutMe?: AboutMe;
     videoHomePage?: string;

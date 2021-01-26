@@ -4,7 +4,7 @@ import Routes from "./router.constants";
 import {useDispatch, useSelector} from "react-redux";
 
 import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
-import {Footer, HeaderComponent} from "../components";
+import {Footer, HeaderComponent, PhotoPopup} from "../components";
 import {fetchLanding} from "../redux/action.creators/app.actions";
 import {
     aboutMeSelector,
@@ -57,6 +57,7 @@ const AppRouter: React.FC = () => {
         <Router>
             <ScrollToTop/>
             <HeaderComponent/>
+            <PhotoPopup/>
             <Switch>
                 <Route exact path={Routes.HomePage} component={HomePage}/>
                 <Route path={Routes.PricePage} component={PricePage}/>

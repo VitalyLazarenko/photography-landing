@@ -16,6 +16,8 @@ export const moduleName = 'app';
 const StateRecord: IStateRecord = {
     loading: false,
     error: undefined,
+    showPhotoPopup: false,
+    selectedPhoto: undefined,
     avatar: undefined,
     aboutMe: undefined,
     videoHomePage: undefined,
@@ -80,6 +82,8 @@ export const imagePriceSelector = createSelector(stateSelector, state => state.g
 export const contactsSelector = createSelector(stateSelector, state => state.get('contacts'));
 export const photoBookVideoSelector = createSelector(stateSelector, state => state.get('photoBookVideo'));
 export const packingVideoSelector = createSelector(stateSelector, state => state.get('packingVideo'));
+export const selectedPhotoSelector = createSelector(stateSelector, state => state.get('selectedPhoto'));
+export const showPhotoPopupSelector = createSelector(stateSelector, state => state.get('showPhotoPopup'));
 
 
 export const saga = function* () {
