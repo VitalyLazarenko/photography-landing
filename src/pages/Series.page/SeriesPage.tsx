@@ -1,84 +1,37 @@
 import React, {useEffect} from "react";
 import styles from './SeriesPage.module.scss';
-import {createStyles, Grid, GridList, GridListTile, makeStyles, Theme, Typography} from "@material-ui/core";
+import {Grid,Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {portfolioSelector, selectSeriesSelector} from "../../redux/app.module";
+import {selectSeriesSelector, seriesSelector} from "../../redux/app.module";
 import {Contacts, PhotoGallery} from "../../components";
 import {Series} from "../../types";
 import {changeControls} from "../../redux/action.creators/app.actions";
 import { useParams } from "react-router-dom";
-import {Photo} from "../../types/Photo";
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            overflow: 'hidden',
-            backgroundColor: theme.palette.background.paper,
-        },
-        gridList: {
-            width: "100%",
-            height: 'auto',
-        },
-    }),
-);
 
 export const SeriesPage: React.FC = () => {
 
     let { sid } = useParams();
     const dispatch = useDispatch();
-    const classes = useStyles();
-    const portfolio = useSelector(portfolioSelector);
-    const content = useSelector(selectSeriesSelector);
+    const series = useSelector(seriesSelector);
+    const selectedSeries = useSelector(selectSeriesSelector);
 
 
     useEffect(() => {
-        if (portfolio) {
-            const selectedSeries = portfolio.find((el: Series) => el._id === sid.slice(1));
+        if (series) {
+            const selectedSeries = series.find((el: Series) => el._id === sid.slice(1));
             selectedSeries && dispatch(changeControls({name: "selectSeries", value: selectedSeries}));
         }
-    }, [sid, portfolio, dispatch]);
-
-    const handleClickPhoto = (photo: Photo) => {
-        dispatch(changeControls({name: "showPhotoPopup", value: true}))
-        dispatch(changeControls({name: "selectedPhoto", value: {
-                photo: photo,
-                series: content && content.photos
-            }}))
-    }
-
-    let count = 6;
-    let count2 = 10;
-
-    const cols = (index: number) => {
-        if (index === 0) {
-            return 2;
-        }
-
-        if (index === count) {
-            count = count + index;
-            return 2;
-        }
-
-        if (index === count2) {
-            count2 = count2 + index;
-            return 2;
-        }
-
-        return 1;
-    };
+    }, [sid, series, dispatch]);
 
     return (
         <Grid container className={styles.series_wrapper}>
             <Grid item md={12} className={styles.title_container}>
-                <Typography className={styles.title}>{content && content.title}</Typography>
-                <Typography className={styles.subtitle}>{content && content.subTitle}</Typography>
+                <Typography className={styles.title}>{selectedSeries && selectedSeries.title}</Typography>
+                <Typography className={styles.subtitle}>{selectedSeries && selectedSeries.subTitle}</Typography>
             </Grid>
 
             <Grid item md={12} className={styles.photo_wrapper}>
-                {content && content.photos && <PhotoGallery images={content.photos}/>}
+                {selectedSeries && selectedSeries.photos && <PhotoGallery images={selectedSeries.photos}/>}
             </Grid>
 
             <Contacts/>

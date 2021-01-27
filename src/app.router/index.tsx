@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect} from "react";
+import React, {useLayoutEffect} from "react";
 import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import Routes from "./router.constants";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,40 +6,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
 import {Footer, HeaderComponent, PhotoPopup} from "../components";
 import {fetchLanding} from "../redux/action.creators/app.actions";
-import {
-    aboutMeSelector,
-    avatarSelector,
-    packagesSelector, portfolioSelector,
-    videoHomePageSelector
-} from "../redux/app.module";
+import {seriesSelector} from "../redux/app.module";
 import ScrollToTop from "./ScrollTop";
 import {PortfolioPage} from "../pages/Portfolio.page/PortfolioPage";
 import {Series} from "../types";
 
 const AppRouter: React.FC = () => {
     const dispatch = useDispatch();
-    const avatar = useSelector(avatarSelector);
-    const aboutMe = useSelector(aboutMeSelector);
-    const videoHomePage = useSelector(videoHomePageSelector);
-    const packages = useSelector(packagesSelector);
-    const portfolio = useSelector(portfolioSelector);
+    const series = useSelector(seriesSelector);
 
     useLayoutEffect(() => {
         dispatch(fetchLanding());
     }, [dispatch]);
 
-    useEffect(() => {
-        console.log('STATE IN ROUTER:', {
-            avatar: avatar,
-            aboutMe: aboutMe,
-            videoHomePage: videoHomePage,
-            packages: packages,
-            portfolio: portfolio,
-        })
-    }, [avatar, aboutMe, videoHomePage, packages, portfolio]);
-
     const renderSeries = () =>
-        portfolio && portfolio.map((series: Series) => {
+        series && series.map((series: Series) => {
             const SeriesComponent: React.FC = () => <SeriesPage/>;
             return (
                 <React.Fragment key={series._id}>
@@ -62,10 +43,9 @@ const AppRouter: React.FC = () => {
                 <Route exact path={Routes.HomePage} component={HomePage}/>
                 <Route path={Routes.PricePage} component={PricePage}/>
                 <Route path={Routes.AboutPage} component={AboutPage}/>
-                {/*<Route path={Routes.SeriesPage} component={SeriesPage}/>*/}
                 <Route path={Routes.PortfolioPage} component={PortfolioPage}/>
                 {
-                    portfolio && renderSeries()
+                    series && renderSeries()
                 }
             </Switch>
             <Footer/>

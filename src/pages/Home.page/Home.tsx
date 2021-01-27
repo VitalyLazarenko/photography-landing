@@ -2,12 +2,11 @@ import React from "react";
 import styles from './Home.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import {portfolioSelector, videoHomePageSelector} from "../../redux/app.module";
+import {homePageSelector} from "../../redux/app.module";
 import {Catalog, Contacts} from "../../components";
 
 export const HomePage = () => {
-    const videoHomePage = useSelector(videoHomePageSelector);
-    const portfolio = useSelector(portfolioSelector);
+    const content = useSelector(homePageSelector);
 
     return (
         <Grid container className={styles.home_wrapper}>
@@ -15,14 +14,14 @@ export const HomePage = () => {
                 <video
                     loop
                     autoPlay
-                    src={videoHomePage && videoHomePage}/>
+                    src={content && content.videoBunner}/>
             </Grid>
 
             <Grid container className={styles.catalog} id="series">
                 <Typography className={styles.series_title}>
                     Серии:
                 </Typography>
-                <Catalog portfolio={portfolio}/>
+                <Catalog portfolio={content && content.series}/>
             </Grid>
 
             <Contacts/>

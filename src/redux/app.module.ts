@@ -16,19 +16,19 @@ export const moduleName = 'app';
 const StateRecord: IStateRecord = {
     loading: false,
     error: undefined,
-    showPhotoPopup: false,
-    selectedPhoto: undefined,
-    avatar: undefined,
-    aboutMe: undefined,
-    videoHomePage: undefined,
-    packages: undefined,
+
     portfolio: undefined,
+    series: undefined,
     selectSeries: undefined,
-    imagePrice: undefined,
+    selectedPhoto: undefined,
+    showPhotoPopup: false,
+
+
+    homePage: undefined,
+    portfolioPage: undefined,
+    pricePage: undefined,
+    aboutMePage: undefined,
     contacts: undefined,
-    photoBookVideo: undefined,
-    packingVideo: undefined,
-    otherPortfolio: undefined,
 };
 
 export const ReducerRecord: Record.Factory<IStateRecord> = Record(cloneDeep(StateRecord));
@@ -46,16 +46,15 @@ export default (state = new ReducerRecord(), action: IActionTypes) => {
         }
         case actions.FETCH_LANDING_SUCCESS: {
             return state
-                .set("avatar", action.payload.avatar)
-                .set("aboutMe", action.payload.aboutMe)
-                .set("videoHomePage", action.payload.videoHomePage)
-                .set("imagePrice", action.payload.imagePrice)
-                .set("packages", action.payload.packages)
-                .set("portfolio", action.payload.portfolio)
-                .set("otherPortfolio", action.payload.other_portfolio)
+                .set("portfolio", action.payload.portfolioPage.photos)
+                .set("series", action.payload.homePage.series)
+
+                .set("homePage", action.payload.homePage)
+                .set("portfolioPage", action.payload.portfolioPage)
+                .set("pricePage", action.payload.pricePage)
+                .set("aboutMePage", action.payload.aboutMePage)
                 .set("contacts", action.payload.contacts)
-                .set("photoBookVideo", action.payload.photoBookVideo)
-                .set("packingVideo", action.payload.packingVideo)
+
                 .set("loading", false)
         }
         case actions.FETCH_LANDING_FAILURE: {
@@ -71,19 +70,19 @@ export default (state = new ReducerRecord(), action: IActionTypes) => {
 export const stateSelector = (state: RootState): RecordType => state[moduleName];
 export const errorSelector = createSelector(stateSelector, state => state.get('error'));
 export const loadingSelector = createSelector(stateSelector, state => state.get('loading'));
-export const avatarSelector = createSelector(stateSelector, state => state.get('avatar'));
-export const aboutMeSelector = createSelector(stateSelector, state => state.get('aboutMe'));
-export const videoHomePageSelector = createSelector(stateSelector, state => state.get('videoHomePage'));
-export const packagesSelector = createSelector(stateSelector, state => state.get('packages'));
+
 export const portfolioSelector = createSelector(stateSelector, state => state.get('portfolio'));
-export const otherPortfolioSelector = createSelector(stateSelector, state => state.get('otherPortfolio'));
+export const seriesSelector = createSelector(stateSelector, state => state.get('series'));
 export const selectSeriesSelector = createSelector(stateSelector, state => state.get('selectSeries'));
-export const imagePriceSelector = createSelector(stateSelector, state => state.get('imagePrice'));
-export const contactsSelector = createSelector(stateSelector, state => state.get('contacts'));
-export const photoBookVideoSelector = createSelector(stateSelector, state => state.get('photoBookVideo'));
-export const packingVideoSelector = createSelector(stateSelector, state => state.get('packingVideo'));
 export const selectedPhotoSelector = createSelector(stateSelector, state => state.get('selectedPhoto'));
 export const showPhotoPopupSelector = createSelector(stateSelector, state => state.get('showPhotoPopup'));
+
+export const homePageSelector = createSelector(stateSelector, state => state.get('homePage'));
+export const portfolioPageSelector = createSelector(stateSelector, state => state.get('portfolioPage'));
+export const pricePageSelector = createSelector(stateSelector, state => state.get('pricePage'));
+export const aboutMePageSelector = createSelector(stateSelector, state => state.get('aboutMePage'));
+export const contactsSelector = createSelector(stateSelector, state => state.get('contacts'));
+
 
 
 export const saga = function* () {

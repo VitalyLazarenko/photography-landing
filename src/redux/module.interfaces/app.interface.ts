@@ -1,25 +1,31 @@
 import * as actions from '../action.creators/app.actions';
-import {AboutMe, Contact, Package, Series} from "../../types";
-import {VideoOverview} from "../../types/VideoOverview";
-import {ISelectedPhoto} from "../../types/ISelectedPhoto";
-import {Photo} from "../../types/Photo";
+import {
+    Contacts,
+    AboutMePage,
+    HomePage,
+    PortfolioPage,
+    PricePage,
+    ISelectedPhoto,
+    Photo,
+    Series
+} from "../../types";
 
 export interface IStateRecord {
     loading: boolean;
     error?: string;
-    showPhotoPopup: boolean;
-    selectedPhoto?: ISelectedPhoto;
-    avatar?: string;
-    aboutMe?: AboutMe;
-    videoHomePage?: string;
-    packages?: Package[];
-    portfolio?: Series[];
-    otherPortfolio?: Photo[];
+
+    portfolio?: Photo[];
+    series?: Series[];
     selectSeries?: Series;
-    imagePrice?: string;
-    contacts?: Contact;
-    photoBookVideo?: VideoOverview;
-    packingVideo?: VideoOverview;
+    selectedPhoto?: ISelectedPhoto;
+    showPhotoPopup: boolean;
+
+
+    homePage?: HomePage;
+    portfolioPage?: PortfolioPage;
+    pricePage?: PricePage;
+    aboutMePage?: AboutMePage;
+    contacts?: Contacts;
 }
 
 type InferTypes<T> = T extends {[key: string]: infer U} ? U : never;

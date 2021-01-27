@@ -1,4 +1,4 @@
-export class Contact {
+export class Contacts {
     title: string;
     description: string;
     link_instagram?: string;

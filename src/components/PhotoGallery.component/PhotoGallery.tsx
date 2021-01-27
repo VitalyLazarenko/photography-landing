@@ -9,23 +9,8 @@ interface IGalleryProps {
     images: Photo[];
 }
 
-export const PhotoGallery:React.FC<IGalleryProps> = ({images}) => {
+export const PhotoGallery: React.FC<IGalleryProps> = ({images}) => {
     const dispatch = useDispatch();
-
-    const imageRenderer = useCallback(
-        ({ index, left, top, key, photo }) => (
-            <SelectedImage
-                key={key}
-                margin={"2px"}
-                index={index}
-                photo={photo}
-                left={left}
-                top={top}
-                handleOnClick={handleClickPhoto}
-            />
-        ),
-        []
-    );
 
     const handleClickPhoto = (photo: string) => {
         dispatch(changeControls({name: "showPhotoPopup", value: true}))
@@ -37,6 +22,18 @@ export const PhotoGallery:React.FC<IGalleryProps> = ({images}) => {
         }))
     };
 
+    const imageRenderer = useCallback(
+        ({index, left, top, key, photo}) => (
+            <SelectedImage
+                key={key}
+                margin={"2px"}
+                index={index}
+                photo={photo}
+                left={left}
+                top={top}
+                handleOnClick={handleClickPhoto}
+            />
+        ), [handleClickPhoto]);
 
     return (
         <Gallery photos={images} renderImage={imageRenderer} direction={"row"}/>
