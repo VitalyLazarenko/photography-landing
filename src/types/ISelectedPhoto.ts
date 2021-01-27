@@ -1,4 +1,6 @@
+import {Photo} from "./Photo";
+
 export interface ISelectedPhoto {
-    photo: string;
-    series: string[];
+    photo?: Photo;
+    series?: Photo[];
 }

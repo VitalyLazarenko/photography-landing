@@ -4,12 +4,13 @@ import {Dialog, DialogContent} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {selectedPhotoSelector, showPhotoPopupSelector} from "../../redux/app.module";
 import {changeControls} from "../../redux/action.creators/app.actions";
+import {Photo} from "../../types/Photo";
 
 export const PhotoPopup = () => {
     const dispatch = useDispatch();
     const open = useSelector(showPhotoPopupSelector);
     const content = useSelector(selectedPhotoSelector);
-    const [selectedPhoto, setSelectedPhoto] = useState('')
+    const [selectedPhoto, setSelectedPhoto] = useState<Photo | undefined>(undefined)
 
     console.log('POPUP STATE: ', {
         open: open,
@@ -26,34 +27,26 @@ export const PhotoPopup = () => {
     };
 
     const handleClickNext = () => {
-        if (content && content.series.findIndex((el: string) => el === selectedPhoto) === content.series.length - 1) {
-            // setDisabledClick(false);
-            // TODO начать сначала
+        if (content && content.series && content.series.findIndex((el: Photo) => el.key === selectedPhoto?.key) === content.series.length - 1) {
+            setSelectedPhoto(content.series[0]);
             return
         } else {
-            if (content) {
-                const result = content.series.findIndex((el: string) => el === selectedPhoto);
+            if (content && content.series) {
+                const result = content.series.findIndex((el: Photo) => el.key === selectedPhoto?.key);
                 if (result !== -1 || result !== content.series.length) setSelectedPhoto(content.series[result + 1]);
-                // setTimeout(() => {
-                //     setDisabledClick(false);
-                // }, 500);
             }
         }
     };
 
     const handleClickBack = () => {
-        if (content && content.series.findIndex((el: string) => el === selectedPhoto) === 0) {
-            // setDisabledClick(false);
+        if (content && content.series && content.series.findIndex((el: Photo) => el.key === selectedPhoto?.key) === 0) {
+            setSelectedPhoto(content.series[content.series.length - 1]);
             return
         } else {
-            if (content) {
-                const result = content.series.findIndex((el: string) => el === selectedPhoto);
+            if (content && content.series) {
+                const result = content.series.findIndex((el: Photo) => el.key === selectedPhoto?.key);
                 if (result > 0) setSelectedPhoto(content.series[result - 1]);
-                // setTimeout(() => {
-                //     setDisabledClick(false);
-                // }, 500);
             }
-
         }
     };
 
@@ -85,7 +78,6 @@ export const PhotoPopup = () => {
     return (
         <React.Fragment>
             <Dialog
-                // fullWidth
                 maxWidth="md"
                 open={open}
                 onBackdropClick={handleClose}
@@ -95,7 +87,12 @@ export const PhotoPopup = () => {
                 style={{borderRadius: 10}}
             >
                 <DialogContent className={styles.dialog_content}>
-                    <img src={selectedPhoto} alt="" className={styles.image} onClick={handleClickNext}/>
+                    <img
+                        src={selectedPhoto?.src}
+                        className={styles.image}
+                        onClick={handleClickNext}
+                        alt=""
+                    />
                 </DialogContent>
             </Dialog>
         </React.Fragment>

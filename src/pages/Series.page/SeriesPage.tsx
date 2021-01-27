@@ -3,10 +3,11 @@ import styles from './SeriesPage.module.scss';
 import {createStyles, Grid, GridList, GridListTile, makeStyles, Theme, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {portfolioSelector, selectSeriesSelector} from "../../redux/app.module";
-import {Contacts} from "../../components";
+import {Contacts, PhotoGallery} from "../../components";
 import {Series} from "../../types";
 import {changeControls} from "../../redux/action.creators/app.actions";
 import { useParams } from "react-router-dom";
+import {Photo} from "../../types/Photo";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -40,7 +41,7 @@ export const SeriesPage: React.FC = () => {
         }
     }, [sid, portfolio, dispatch]);
 
-    const handleClickPhoto = (photo: string) => {
+    const handleClickPhoto = (photo: Photo) => {
         dispatch(changeControls({name: "showPhotoPopup", value: true}))
         dispatch(changeControls({name: "selectedPhoto", value: {
                 photo: photo,
@@ -77,25 +78,7 @@ export const SeriesPage: React.FC = () => {
             </Grid>
 
             <Grid item md={12} className={styles.photo_wrapper}>
-                <div className={classes.root}>
-                    {
-                        content && content.photos &&
-                        <GridList cellHeight={160} className={classes.gridList} cols={3}>
-                            {content.photos.map((photo, index) => {
-                                return (
-                                    <GridListTile
-                                        key={index}
-                                        cols={cols(index)}
-                                        className={styles.photo_container}
-                                        onClick={() => handleClickPhoto(photo)}
-                                    >
-                                        <img src={photo} alt=""/>
-                                    </GridListTile>
-                                )
-                            })}
-                        </GridList>
-                    }
-                </div>
+                {content && content.photos && <PhotoGallery images={content.photos}/>}
             </Grid>
 
             <Contacts/>

@@ -6,6 +6,7 @@ import {
 import Contentful from "../../utils/contentful";
 import {AboutMe, Contact, Package, Series} from "../../types";
 import {VideoOverview} from "../../types/VideoOverview";
+import {Photo} from "../../types/Photo";
 
 
 const _instance = Contentful.getInstance();
@@ -46,7 +47,7 @@ export const fetchLandingSaga = function* () {
             imagePrice: response.fields.image_price_page.fields.file.url,
             packages: response.fields.packages.map((el: any) => new Package(el)),
             portfolio: response.fields.portfolio.map((el: any) => new Series(el)),
-            other_portfolio: response.fields.other_portfolio.map((el: any) => el.fields.file.url),
+            other_portfolio: response.fields.other_portfolio.map((el: any) => new Photo(el)),
             contacts: new Contact(response.fields.contacts),
         }
 

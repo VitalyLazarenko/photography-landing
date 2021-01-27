@@ -12,24 +12,25 @@ export const AboutPage = () => {
 
     return (
         <Grid container className={styles.about_wrapper}>
-            <Grid item md={6} className={styles.avatar_container}>
-                <section className={styles.img_container}>
-                    <img src={avatar} alt=""/>
-                </section>
-            </Grid>
-            <Grid item md={6} className={styles.description_container}>
-                <Typography className={styles.title}>
-                    {aboutMeContect && aboutMeContect.title}
-                </Typography>
-                <Typography className={styles.description}>
-                    {aboutMeContect && aboutMeContect.description}
-                </Typography>
+            <Grid container className={styles.about_container}>
+                <Grid item md={6} className={styles.avatar_container}>
+                    <section className={styles.img_container}>
+                        <img src={avatar} alt=""/>
+                    </section>
+                </Grid>
+                <Grid item md={6} className={styles.description_container}>
+                    <Typography className={styles.title}>
+                        {aboutMeContect && aboutMeContect.title}
+                    </Typography>
+                    <Typography className={styles.description}>
+                        {aboutMeContect && aboutMeContect.description}
+                    </Typography>
+                </Grid>
             </Grid>
 
-            <Grid item md={12} className={styles.overview_container}>
+            <Grid container className={styles.overview_container}>
                 //TODO create overview for grigorenko
             </Grid>
-
 
             <Grid item md={12} className={styles.video_container}>
                 <video src={aboutMeContect && aboutMeContect.video} controls preload="auto"/>

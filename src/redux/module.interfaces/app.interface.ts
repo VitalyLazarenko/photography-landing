@@ -2,6 +2,7 @@ import * as actions from '../action.creators/app.actions';
 import {AboutMe, Contact, Package, Series} from "../../types";
 import {VideoOverview} from "../../types/VideoOverview";
 import {ISelectedPhoto} from "../../types/ISelectedPhoto";
+import {Photo} from "../../types/Photo";
 
 export interface IStateRecord {
     loading: boolean;
@@ -13,7 +14,7 @@ export interface IStateRecord {
     videoHomePage?: string;
     packages?: Package[];
     portfolio?: Series[];
-    otherPortfolio?: string[];
+    otherPortfolio?: Photo[];
     selectSeries?: Series;
     imagePrice?: string;
     contacts?: Contact;

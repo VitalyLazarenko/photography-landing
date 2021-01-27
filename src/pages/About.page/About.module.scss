@@ -1,48 +1,50 @@
 .about_wrapper {
-  .avatar_container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    padding-right: 20px;
-
-    .img_container {
-      overflow: hidden;
-      width: 320px;
-      height: 480px;
-      //background-color: #282c34;
-
+  .about_container {
+    .avatar_container {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
 
-      img {
-        width: 100%;
-        height: auto;
+      padding-right: 20px;
+
+      .img_container {
+        overflow: hidden;
+        width: 320px;
+        height: 480px;
+        //background-color: #282c34;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
     }
-  }
 
-  .description_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    .description_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
 
-    padding-left: 20px;
+      padding-left: 20px;
 
-    .title {
-      width: 80%;
-      margin-bottom: 20px;
-      font-weight: bold;
+      .title {
+        width: 80%;
+        margin-bottom: 20px;
+        font-weight: bold;
 
-      text-transform: uppercase;
-    }
+        text-transform: uppercase;
+      }
 
-    .description {
-      width: 70%;
-      text-align: justify;
-      color: #666;
+      .description {
+        width: 70%;
+        text-align: justify;
+        color: #666;
+      }
     }
   }
 
