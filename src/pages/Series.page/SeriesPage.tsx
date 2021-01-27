@@ -40,6 +40,14 @@ export const SeriesPage: React.FC = () => {
         }
     }, [sid, portfolio, dispatch]);
 
+    const handleClickPhoto = (photo: string) => {
+        dispatch(changeControls({name: "showPhotoPopup", value: true}))
+        dispatch(changeControls({name: "selectedPhoto", value: {
+                photo: photo,
+                series: content && content.photos
+            }}))
+    }
+
     let count = 6;
     let count2 = 10;
 
@@ -59,7 +67,7 @@ export const SeriesPage: React.FC = () => {
         }
 
         return 1;
-    }
+    };
 
     return (
         <Grid container className={styles.series_wrapper}>
@@ -75,7 +83,12 @@ export const SeriesPage: React.FC = () => {
                         <GridList cellHeight={160} className={classes.gridList} cols={3}>
                             {content.photos.map((photo, index) => {
                                 return (
-                                    <GridListTile key={index} cols={cols(index)} className={styles.photo_container}>
+                                    <GridListTile
+                                        key={index}
+                                        cols={cols(index)}
+                                        className={styles.photo_container}
+                                        onClick={() => handleClickPhoto(photo)}
+                                    >
                                         <img src={photo} alt=""/>
                                     </GridListTile>
                                 )

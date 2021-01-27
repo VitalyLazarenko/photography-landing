@@ -1,0 +1,24 @@
+.photo_popup_wrapper {
+  .dialog_content {
+    padding: 0 !important;
+
+    max-height: 700px;
+    max-width: 960px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+
+    background-color: #000 !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .image {
+      cursor: pointer;
+      max-height: 700px;
+      max-width: 960px;
+      object-fit: contain;
+    }
+  }
+}

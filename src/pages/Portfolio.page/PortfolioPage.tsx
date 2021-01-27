@@ -45,7 +45,7 @@ export const PortfolioPage = () => {
         }
 
         return 1;
-    }
+    };
 
     const handleClickPhoto = (photo: string) => {
         dispatch(changeControls({name: "showPhotoPopup", value: true}))
@@ -53,7 +53,7 @@ export const PortfolioPage = () => {
                 photo: photo,
                 series: photos
             }}))
-    }
+    };
 
     return (
         <div className={styles.wrapper}>
