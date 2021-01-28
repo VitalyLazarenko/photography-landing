@@ -28,7 +28,7 @@ export const AboutPage = () => {
             </Grid>
 
             <Grid container className={styles.overview_container}>
-                //TODO create overview for grigorenko
+                {/*//TODO create overview for grigorenko*/}
             </Grid>
 
             <Grid item md={12} className={styles.video_container}>

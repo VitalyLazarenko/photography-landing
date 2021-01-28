@@ -21,9 +21,44 @@ export const fetchLandingSaga = function* () {
             return await _instance.client.getEntry("3fpfAZt1PRbAYgbiI1XL93")
         });
 
-        console.log('RESPONSE:', response);
+        const _series_promises: any[] = [];
 
-        const newResult = {
+        response.fields.home_page.fields.series.forEach((series: any) => {
+
+            const promise = new Promise(async (response) => {
+
+                const entry = await _instance.client.getEntry(series.sys.id && series.sys.id);
+
+                response(entry);
+            })
+
+            _series_promises.push(promise)
+        });
+
+        const _packages_promises: any[] = [];
+
+        response.fields.price_page.fields.packages.forEach((pack: any) => {
+
+            const promise = new Promise(async (response) => {
+
+                const entry = await _instance.client.getEntry(pack.sys.id && pack.sys.id);
+
+                response(entry);
+            })
+
+            _packages_promises.push(promise)
+        });
+
+        const series = yield call(async () => await Promise.all(_series_promises));
+        const packages = yield call(async () => await Promise.all(_packages_promises));
+
+        response.fields.price_page.fields.packages = packages;
+        response.fields.home_page.fields.series = series;
+
+
+        console.log('RESPONSE: ',  response);
+
+        const result = {
             homePage: new HomePage(response.fields.home_page),
             portfolioPage: new PortfolioPage(response.fields.portfolio_page),
             pricePage: new PricePage(response.fields.price_page),
@@ -31,9 +66,9 @@ export const fetchLandingSaga = function* () {
             contacts: new Contacts(response.fields.contacts),
         }
 
-        console.log('NEW RESULT: ', newResult);
+        console.log('RESULT: ', result);
 
-        yield put(fetchLandingSuccess(newResult));
+        yield put(fetchLandingSuccess(result));
     } catch (error) {
         console.log('ERROR', error);
         yield put(fetchLandingFailure(error.message))

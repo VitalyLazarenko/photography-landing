@@ -3,7 +3,7 @@ import Gallery from "react-photo-gallery";
 import SelectedImage from "./selectedImage";
 import {changeControls} from "../../redux/action.creators/app.actions";
 import {useDispatch} from "react-redux";
-import {Photo} from "../../types/Photo";
+import {Photo} from "../../types";
 
 interface IGalleryProps {
     images: Photo[];
@@ -12,7 +12,7 @@ interface IGalleryProps {
 export const PhotoGallery: React.FC<IGalleryProps> = ({images}) => {
     const dispatch = useDispatch();
 
-    const handleClickPhoto = (photo: string) => {
+    const handleClickPhoto = useCallback((photo: string) => {
         dispatch(changeControls({name: "showPhotoPopup", value: true}))
         dispatch(changeControls({
             name: "selectedPhoto", value: {
@@ -20,7 +20,7 @@ export const PhotoGallery: React.FC<IGalleryProps> = ({images}) => {
                 series: images
             }
         }))
-    };
+    }, [dispatch, images]);
 
     const imageRenderer = useCallback(
         ({index, left, top, key, photo}) => (

@@ -4,7 +4,7 @@ const AboutPage = "/about_me";
 const SeriesPage = "/series";
 const PortfolioPage = "/portfolio";
 
-export default {
+export const Routes = {
   HomePage,
   PricePage,
   AboutPage,

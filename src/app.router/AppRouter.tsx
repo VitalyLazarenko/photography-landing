@@ -1,6 +1,6 @@
 import React, {useLayoutEffect} from "react";
 import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
-import Routes from "./router.constants";
+import {Routes} from "./router.constants";
 import {useDispatch, useSelector} from "react-redux";
 
 import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
@@ -11,7 +11,7 @@ import ScrollToTop from "./ScrollTop";
 import {PortfolioPage} from "../pages/Portfolio.page/PortfolioPage";
 import {Series} from "../types";
 
-const AppRouter: React.FC = () => {
+export const AppRouter: React.FC = () => {
     const dispatch = useDispatch();
     const series = useSelector(seriesSelector);
 
@@ -52,5 +52,3 @@ const AppRouter: React.FC = () => {
         </Router>
     );
 };
-
-export default AppRouter;

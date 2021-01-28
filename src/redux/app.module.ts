@@ -34,7 +34,7 @@ const StateRecord: IStateRecord = {
 export const ReducerRecord: Record.Factory<IStateRecord> = Record(cloneDeep(StateRecord));
 type RecordType = ReturnType<typeof ReducerRecord>;
 
-export default (state = new ReducerRecord(), action: IActionTypes) => {
+const AppModule = (state = new ReducerRecord(), action: IActionTypes) => {
     switch (action.type) {
         case actions.CHANGE_CONTROLS_SUCCESS: {
             return state
@@ -83,7 +83,7 @@ export const pricePageSelector = createSelector(stateSelector, state => state.ge
 export const aboutMePageSelector = createSelector(stateSelector, state => state.get('aboutMePage'));
 export const contactsSelector = createSelector(stateSelector, state => state.get('contacts'));
 
-
+export default AppModule;
 
 export const saga = function* () {
     yield all([

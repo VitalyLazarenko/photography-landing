@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid} from '@material-ui/core'
 import styles from './header.module.scss';
 import {HashLink as Link} from "react-router-hash-link";
-import Routes from '../../app.router/router.constants';
+import {Routes} from "../../app.router";
 
 export const HeaderComponent = () => {
     return (
