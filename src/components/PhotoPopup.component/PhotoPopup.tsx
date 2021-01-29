@@ -4,18 +4,13 @@ import {Dialog, DialogContent} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {selectedPhotoSelector, showPhotoPopupSelector} from "../../redux/app.module";
 import {changeControls} from "../../redux/action.creators/app.actions";
-import {Photo} from "../../types/Photo";
+import {Photo} from "../../types";
 
 export const PhotoPopup = () => {
     const dispatch = useDispatch();
     const open = useSelector(showPhotoPopupSelector);
     const content = useSelector(selectedPhotoSelector);
     const [selectedPhoto, setSelectedPhoto] = useState<Photo | undefined>(undefined)
-
-    console.log('POPUP STATE: ', {
-        open: open,
-        selected: content
-    })
 
     useEffect(() => {
         content && setSelectedPhoto(content.photo);

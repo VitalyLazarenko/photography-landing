@@ -4,10 +4,7 @@ import {
     changeControlsSuccess, fetchLandingFailure, fetchLandingRequest, fetchLandingSuccess,
 } from "../action.creators/app.actions";
 import Contentful from "../../utils/contentful";
-import {AboutMe, Contact, Package, Series} from "../../types";
-import {VideoOverview} from "../../types/VideoOverview";
-import {Photo} from "../../types/Photo";
-
+import {Contacts, AboutMePage, HomePage, PortfolioPage, PricePage} from "../../types";
 
 const _instance = Contentful.getInstance();
 
@@ -24,34 +21,52 @@ export const fetchLandingSaga = function* () {
             return await _instance.client.getEntry("3fpfAZt1PRbAYgbiI1XL93")
         });
 
-        console.log('RESPONSE:', response);
+        const _series_promises: any[] = [];
+
+        response.fields.home_page.fields.series.forEach((series: any) => {
+
+            const promise = new Promise(async (response) => {
+
+                const entry = await _instance.client.getEntry(series.sys.id && series.sys.id);
+
+                response(entry);
+            })
+
+            _series_promises.push(promise)
+        });
+
+        const _packages_promises: any[] = [];
+
+        response.fields.price_page.fields.packages.forEach((pack: any) => {
+
+            const promise = new Promise(async (response) => {
+
+                const entry = await _instance.client.getEntry(pack.sys.id && pack.sys.id);
+
+                response(entry);
+            })
+
+            _packages_promises.push(promise)
+        });
+
+        const series = yield call(async () => await Promise.all(_series_promises));
+        const packages = yield call(async () => await Promise.all(_packages_promises));
+
+        response.fields.price_page.fields.packages = packages;
+        response.fields.home_page.fields.series = series;
+
+
+        console.log('RESPONSE: ',  response);
 
         const result = {
-            avatar: response.fields.avatar.fields.file.url,
-            aboutMe: new AboutMe({
-                about_me_title: response.fields.about_me_title,
-                about_me: response.fields.about_me,
-                video_about_me: response.fields.video_about_me,
-            }),
-            photoBookVideo: new VideoOverview({
-                title: response.fields.photo_book_video_title,
-                description: response.fields.photo_book_description,
-                video: response.fields.photo_book_video,
-            }),
-            packingVideo: new VideoOverview({
-                title: response.fields.packing_video_title,
-                description: response.fields.packing_description,
-                video: response.fields.packing_video,
-            }),
-            videoHomePage: response.fields.video_home_page.fields.file.url,
-            imagePrice: response.fields.image_price_page.fields.file.url,
-            packages: response.fields.packages.map((el: any) => new Package(el)),
-            portfolio: response.fields.portfolio.map((el: any) => new Series(el)),
-            other_portfolio: response.fields.other_portfolio.map((el: any) => new Photo(el)),
-            contacts: new Contact(response.fields.contacts),
+            homePage: new HomePage(response.fields.home_page),
+            portfolioPage: new PortfolioPage(response.fields.portfolio_page),
+            pricePage: new PricePage(response.fields.price_page),
+            aboutMePage: new AboutMePage(response.fields.about_page),
+            contacts: new Contacts(response.fields.contacts),
         }
 
-        console.log('RESULT:', result);
+        console.log('RESULT: ', result);
 
         yield put(fetchLandingSuccess(result));
     } catch (error) {

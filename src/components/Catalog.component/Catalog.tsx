@@ -4,8 +4,8 @@ import {Grid, Typography} from "@material-ui/core";
 import {Series} from "../../types";
 import {useDispatch} from "react-redux";
 import {changeControls} from "../../redux/action.creators/app.actions";
-import Routes from '../../app.router/router.constants';
 import {Link} from "react-router-dom";
+import {Routes} from "../../app.router";
 
 interface ICatalogProps {
     portfolio?: Series[];

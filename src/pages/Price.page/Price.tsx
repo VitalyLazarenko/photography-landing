@@ -1,41 +1,31 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from './Price.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import {
-    imagePriceSelector,
-    packagesSelector,
-    packingVideoSelector,
-    photoBookVideoSelector
-} from "../../redux/app.module";
+import {pricePageSelector} from "../../redux/app.module";
 import {Package} from "../../types";
 import {Contacts} from "../../components";
 
 export const PricePage = () => {
-    const image = useSelector(imagePriceSelector);
-    const packages = useSelector(packagesSelector);
-    const photoBookVideo = useSelector(photoBookVideoSelector);
-    const packingVideo = useSelector(packingVideoSelector);
+    const photoRef = useRef<HTMLDivElement | null>(null);
+    const packingRef = useRef<HTMLDivElement | null>(null);
 
-    console.log('BOOK AND PACKING:', {
-        book: photoBookVideo,
-        packing: packingVideo
-    });
+    const content = useSelector(pricePageSelector);
 
     return (
         <Grid container className={styles.price_wrapper}>
             <Grid item md={12} className={styles.image_container}>
-                <img src={image && image} alt=""/>
+                <img src={content && content.imageBunner} alt=""/>
             </Grid>
 
             <Grid item md={8} className={styles.card_container}>
                 <Grid item md={12} className={styles.title_wrapper}>
-                    <Typography className={styles.title}>Услуги</Typography>
+                    <Typography className={styles.title}>Prices</Typography>
                 </Grid>
 
                 <Grid container className={styles.card_wrapper}>
                     {
-                        packages && packages.map((el: Package, index: number) => {
+                        content && content.packages && content.packages.map((el: Package, index: number) => {
                             return (
                                 <Grid key={index} item md={4} className={styles.card}>
                                     <section className={styles.card_container}>
@@ -63,14 +53,26 @@ export const PricePage = () => {
                                         }
                                         {
                                             el.packing &&
-                                            <section className={styles.description_container}>
-                                                <Typography className={styles.text}>{el.packing}</Typography>
+                                            <section
+                                                className={styles.description_container}
+                                                onClick={() => packingRef && packingRef.current && packingRef.current.scrollIntoView({
+                                                    block: "center",
+                                                    behavior: "smooth"
+                                                })}
+                                            >
+                                                <Typography className={styles.text_link}>{el.packing}</Typography>
                                             </section>
                                         }
                                         {
                                             el.photoBook &&
-                                            <section className={styles.description_container}>
-                                                <Typography className={styles.text}>{el.photoBook}</Typography>
+                                            <section
+                                                className={styles.description_container}
+                                                onClick={() => photoRef && photoRef.current && photoRef.current.scrollIntoView({
+                                                    block: "center",
+                                                    behavior: "smooth"
+                                                })}
+                                            >
+                                                <Typography className={styles.text_link}>{el.photoBook}</Typography>
                                             </section>
                                         }
                                         {
@@ -97,29 +99,29 @@ export const PricePage = () => {
 
 
             {
-                photoBookVideo &&
-                <Grid item md={12} className={styles.overview_container}>
+                content && content.videoPhotoBookOverview &&
+                <Grid item md={12} className={styles.overview_container} ref={photoRef}>
                     <Grid item md={6} className={styles.video_container}>
-                        <video src={photoBookVideo.video} controls preload="auto"/>
+                        <video src={content.videoPhotoBookOverview} controls preload="auto"/>
                     </Grid>
 
                     <Grid item md={6} className={styles.description_video}>
-                        <Typography className={styles.video_title}>{photoBookVideo.title}</Typography>
-                        <Typography className={styles.video_description}>{photoBookVideo.description}</Typography>
+                        <Typography className={styles.video_title}>{content.photoBookTitile}</Typography>
+                        <Typography className={styles.video_description}>{content.photoBookOverview}</Typography>
                     </Grid>
                 </Grid>
             }
 
             {
-                packingVideo &&
-                <Grid item md={12} className={styles.overview_container}>
+                content && content.videoPackingOverview &&
+                <Grid item md={12} className={styles.overview_container} ref={packingRef}>
                     <Grid item md={6} className={styles.description_video}>
-                        <Typography className={styles.video_title}>{packingVideo.title}</Typography>
-                        <Typography className={styles.video_description}>{packingVideo.description}</Typography>
+                        <Typography className={styles.video_title}>{content.packingOverviewTitle}</Typography>
+                        <Typography className={styles.video_description}>{content.packingOverview}</Typography>
                     </Grid>
 
                     <Grid item md={6} className={styles.video_container}>
-                        <video src={packingVideo.video} controls preload="auto"/>
+                        <video src={content.videoPackingOverview} controls preload="auto"/>
                     </Grid>
                 </Grid>
             }
