@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from './Price.module.scss';
 import {Grid, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
@@ -7,6 +7,9 @@ import {Package} from "../../types";
 import {Contacts} from "../../components";
 
 export const PricePage = () => {
+    const photoRef = useRef<HTMLDivElement | null>(null);
+    const packingRef = useRef<HTMLDivElement | null>(null);
+
     const content = useSelector(pricePageSelector);
 
     return (
@@ -17,7 +20,7 @@ export const PricePage = () => {
 
             <Grid item md={8} className={styles.card_container}>
                 <Grid item md={12} className={styles.title_wrapper}>
-                    <Typography className={styles.title}>Услуги</Typography>
+                    <Typography className={styles.title}>Prices</Typography>
                 </Grid>
 
                 <Grid container className={styles.card_wrapper}>
@@ -50,14 +53,26 @@ export const PricePage = () => {
                                         }
                                         {
                                             el.packing &&
-                                            <section className={styles.description_container}>
-                                                <Typography className={styles.text}>{el.packing}</Typography>
+                                            <section
+                                                className={styles.description_container}
+                                                onClick={() => packingRef && packingRef.current && packingRef.current.scrollIntoView({
+                                                    block: "center",
+                                                    behavior: "smooth"
+                                                })}
+                                            >
+                                                <Typography className={styles.text_link}>{el.packing}</Typography>
                                             </section>
                                         }
                                         {
                                             el.photoBook &&
-                                            <section className={styles.description_container}>
-                                                <Typography className={styles.text}>{el.photoBook}</Typography>
+                                            <section
+                                                className={styles.description_container}
+                                                onClick={() => photoRef && photoRef.current && photoRef.current.scrollIntoView({
+                                                    block: "center",
+                                                    behavior: "smooth"
+                                                })}
+                                            >
+                                                <Typography className={styles.text_link}>{el.photoBook}</Typography>
                                             </section>
                                         }
                                         {
@@ -85,7 +100,7 @@ export const PricePage = () => {
 
             {
                 content && content.videoPhotoBookOverview &&
-                <Grid item md={12} className={styles.overview_container}>
+                <Grid item md={12} className={styles.overview_container} ref={photoRef}>
                     <Grid item md={6} className={styles.video_container}>
                         <video src={content.videoPhotoBookOverview} controls preload="auto"/>
                     </Grid>
@@ -99,7 +114,7 @@ export const PricePage = () => {
 
             {
                 content && content.videoPackingOverview &&
-                <Grid item md={12} className={styles.overview_container}>
+                <Grid item md={12} className={styles.overview_container} ref={packingRef}>
                     <Grid item md={6} className={styles.description_video}>
                         <Typography className={styles.video_title}>{content.packingOverviewTitle}</Typography>
                         <Typography className={styles.video_description}>{content.packingOverview}</Typography>

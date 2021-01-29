@@ -1,6 +1,8 @@
+@import "../../styles/variables.module";
+
 .footer_wrapper {
   height: 80px;
-  background-color: #fcfcfc;
+  background-color: $lite-grey;
 
   display: flex;
   justify-content: center;
@@ -8,12 +10,19 @@
   transition: all .25s ease-out;
 
   .title {
+    text-transform: capitalize;
     cursor: pointer;
-    color: #444444;
+
+    font-family: $barlow-light;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    color: $lite-black;
+
     transition: color .25s ease-out;
 
     &:hover {
-      color: #a38c4d;
+      color: $gold;
     }
   }
 }

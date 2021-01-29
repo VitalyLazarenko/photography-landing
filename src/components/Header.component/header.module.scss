@@ -1,3 +1,5 @@
+@import "../../styles/variables.module";
+
 .header_wrapper {
   .logo_container {
     display: flex;
@@ -29,14 +31,16 @@
       text-decoration: none;
 
       text-transform: uppercase;
+      font-family: $barlow-extraLight;
+      font-weight: 300;
       font-size: 16px;
       line-height: 30px;
       padding: 10px 30px;
-      color: #444;
+      color: $lite-black;
       transition: color .25s ease-out;
 
       &:hover {
-        color: #a38c4d;
+        color: $gold;
       }
     }
   }

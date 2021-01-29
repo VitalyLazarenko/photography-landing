@@ -7,7 +7,7 @@ import {HomePage, AboutPage, PricePage, SeriesPage} from "../pages";
 import {Footer, HeaderComponent, PhotoPopup} from "../components";
 import {fetchLanding} from "../redux/action.creators/app.actions";
 import {seriesSelector} from "../redux/app.module";
-import ScrollToTop from "./ScrollTop";
+import ScrollToTop from "../utils/ScrollTop";
 import {PortfolioPage} from "../pages/Portfolio.page/PortfolioPage";
 import {Series} from "../types";
 

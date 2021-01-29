@@ -19,7 +19,7 @@ export const HomePage = () => {
 
             <Grid container className={styles.catalog} id="series">
                 <Typography className={styles.series_title}>
-                    Серии:
+                    Series
                 </Typography>
                 <Catalog portfolio={content && content.series}/>
             </Grid>

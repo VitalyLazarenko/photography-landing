@@ -10,6 +10,10 @@ export const PortfolioPage = () => {
 
     return (
         <Grid container className={styles.wrapper}>
+            <Grid item md={12} className={styles.image_container}>
+                <img src={content && content.imageBunner} alt=""/>
+            </Grid>
+
             {
                 content &&
                 <Grid item md={12} className={styles.title_container}>
@@ -18,7 +22,9 @@ export const PortfolioPage = () => {
                 </Grid>
             }
 
+            <Grid item md={12} className={styles.gallery_container}>
             {content && content.photos && <PhotoGallery images={content.photos}/>}
+            </Grid>
 
             <Contacts/>
         </Grid>

@@ -1,3 +1,5 @@
+@import "../../styles/variables.module";
+
 .price_wrapper {
   display: flex;
   justify-content: center;
@@ -14,13 +16,13 @@
     max-height: 380px;
     overflow: hidden;
 
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
     transition: all .5s ease-out;
 
     img {
       width: 100%;
       height: auto;
-      transform: translateY(-12%);
+      transform: translateY(25%);
 
       user-select: none;
       pointer-events: none;
@@ -30,13 +32,19 @@
   .card_container {
     .title_wrapper {
       width: 100%;
-      margin: 20px 0;
+      margin: 30px 0;
       display: flex;
       justify-content: center;
 
       .title {
-        color: #444;
-        font-size: 32px;
+        text-transform: uppercase;
+        text-align: center;
+
+        font-family: $barlow-semiBold;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 20px;
+        color: $lite-black;
       }
     }
 
@@ -49,7 +57,7 @@
         .card_container {
           padding-bottom: 20px;
           border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           overflow: hidden;
           margin-right: 10px;
 
@@ -66,16 +74,25 @@
             height: 120px;
             margin-bottom: 20px;
 
-            background-color: #888;
+            background-color: $grey;
 
             .title_name {
-              color: #fff;
-              font-size: 24px;
+              font-family: $barlow-bold;
+              font-size: 22px;
+              font-weight: 500;
+              line-height: 20px;
+              color: $white;
             }
 
             .name {
-              color: #fff;
-              font-size: 32px;
+              text-transform: capitalize;
+              margin-top: 10px;
+
+              font-family: $barlow-bold;
+              font-size: 26px;
+              font-weight: bold;
+              line-height: 20px;
+              color: $white;
             }
           }
 
@@ -89,11 +106,33 @@
               width: 90%;
               margin-bottom: 20px;
               text-align: center;
-              color: #444;
+
+              font-family: $barlow-regular;
+              font-size: 16px;
+              font-weight: 300;
+              line-height: 20px;
+              color: $grey;
+
+              transition: $transition-images;
+
+              &_link {
+                @extend .text;
+
+                cursor: pointer;
+                text-decoration: underline;
+
+                color: #666;
+
+                &:hover {
+                  transform: scale(1.02);
+                  color: $gold;
+                }
+              }
 
               &_bold {
                 @extend .text;
                 font-weight: bold;
+                color: #666;
               }
 
               &:after {
@@ -115,7 +154,7 @@
   }
 
   .overview_container {
-    background-color: #fcfcfc;
+    background-color: $lite-grey;
 
     display: flex;
     margin: 20px 0;
@@ -137,14 +176,23 @@
 
       .video_title {
         margin-bottom: 20px;
-        font-weight: bold;
-
         text-transform: uppercase;
+
+        font-family: $barlow-bold;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 20px;
+        color: $lite-black;
       }
 
       .video_description {
         text-align: justify;
-        color: #666;
+
+        font-family: $barlow-regular;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 20px;
+        color: $grey;
       }
     }
   }

@@ -6,7 +6,7 @@ import {Routes} from "../../app.router";
 
 export const HeaderComponent = () => {
     return (
-        <Grid container className={styles.header_wrapper}>
+        <Grid container className={styles.header_wrapper} id={"top"}>
             <Grid item md={12} className={styles.logo_container}>
                 <img src="/assets/images/header/logo.png" alt=""/>
             </Grid>

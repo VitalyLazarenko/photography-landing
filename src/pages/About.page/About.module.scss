@@ -1,3 +1,5 @@
+@import "../../styles/variables.module";
+
 .about_wrapper {
   .about_container {
     .avatar_container {
@@ -33,17 +35,26 @@
       padding-left: 20px;
 
       .title {
-        width: 80%;
+        width: 60%;
         margin-bottom: 20px;
-        font-weight: bold;
-
         text-transform: uppercase;
+
+        font-family: $barlow-bold;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 30px;
+        color: $lite-black;
       }
 
       .description {
-        width: 70%;
+        width: 80%;
         text-align: justify;
-        color: #666;
+
+        font-family: $barlow-regular;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 20px;
+        color: $grey;
       }
     }
   }

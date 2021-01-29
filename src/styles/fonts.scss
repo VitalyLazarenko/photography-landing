@@ -1,0 +1,12 @@
+@import './mixins';
+
+$font_path: '/assets/fonts/barlow/';
+
+@include font-face('Barlow-Bold', $font_path + 'Barlow-Bold', 500);
+@include font-face('Barlow-SemiBold', $font_path + 'Barlow-SemiBold', 500);
+
+@include font-face('Barlow-Regular', $font_path + 'Barlow-Regular', 400);
+@include font-face('Barlow-Light', $font_path + 'Barlow-Light', 300);
+@include font-face('Barlow-ExtraLight', $font_path + 'Barlow-ExtraLight', 200);
+
+@include font-face('Barlow-Italic', $font_path + 'Barlow-Italic', 300);
